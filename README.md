@@ -21,29 +21,36 @@ In the main function, user creates an default instant of the child class, and th
 **
 
 ## Game Loop Flowchart
-``` flow
-st=>start: Start
-op1=>operation: Create shader programs and get uniform variables.
-op2=>operation: Call OnUserCreate()
-cond1=>condition: OnUserCreate() returns true
-op3=>operation: Create projection matrix
-cond2=>condition: Window should close
-cond3=>condition: Free camera active
-op4=>operation: Update free camera using input
-op5=>operation: Call OnUserUpdate()
-cond4=>condition: OnUserUpdate() returns true
-op6=>operation: Render all objects and refresh window.
-e=>end: Terminate
+``` mermaid
+flowchart TD
+st([Start])
+op1[[Create shader programs and get uniform variables]]
+op2 [[Call OnUserCreate()]]
+cond1{OnUserCreate() returns true}
+op3[[Create projection matrix]]
+cond2{Window should close}
+cond3{Free camera active}
+op4[[Update free camera using input]]
+op5[[Call OnUserUpdate()]]
+cond4{OnUserUpdate() returns true}
+op6[[Render all objects and refresh window.]]
+e([Terminate])
 
-st->op1->op2->cond1->op3->cond2->cond3->op4->op5->cond4->op6->cond2
-cond1(yes)->op3
-cond1(no)->e
-cond2(yes)->cond3
-cond2(no)->e
-cond3(yes)->op4
-cond3(no)->op5
-cond4(yes)->op6
-cond4(no)->e
+st-->op1
+op1-->op2
+op2-->cond1
+cond1-- YES -->op3
+cond1-- NO -->e
+op3-->cond2
+cond2-- YES -->cond3
+cond2-- NO -->e
+cond3-- YES -->op4
+cond3-- NO -->op5
+op4-->op5
+op5-->cond4
+cond4-- YES -->op6
+cond4-- NO -->e
+op6-->cond2
 ```
 
 ## Files
