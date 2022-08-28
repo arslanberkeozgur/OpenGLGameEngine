@@ -1,6 +1,6 @@
 # OpenGLGameEngine 
 
-This is a crude game engine in development, being created for educational purposes. It is probably mildly -- if not horribly -- inefficient at some places, and it does not do much yet, but it is a learning experience focused mostly on creating a minimal working example.
+This is a crude game engine in development, being created for educational purposes. It is probably mildly -- if not horribly -- inefficient at some places, and it does not do much *yet*, but it is a learning experience focused mostly on creating a minimal working example.
 
 ##  Features
 - Basic 3-D shape creation and management, with customizable positions, velocities, rotations and angular velocities.
