@@ -54,7 +54,7 @@ op6-->cond2
 
 ## Files
 ### GLManager.h
-This file defines the engine : everything the user will interact when making his/her game. Inside, it defines the class GLManager, which the user needs to inherit from when making his/her game.
+This file defines the engine : everything the user will interact with when making his/her game. Inside, it defines the class GLManager, which the user needs to inherit from when making his/her game.
 
 #### Functions
 
