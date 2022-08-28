@@ -17,8 +17,7 @@ In order to use the engine, user needs to satisfy the usual requirements for usi
 
 In the main function, user creates an default instant of the child class, and then calls the Run(width, height) function with desired window width and height to initialize the game.
 
-**Source.cpp in the repo gives a demonstration of implementation of the engine.
-**
+**Source.cpp in the repo gives a demonstration of implementation of the engine.**
 
 ## Game Loop Flowchart
 ``` mermaid
