@@ -1,13 +1,13 @@
 # OpenGLGameEngine 
 
-This is a crude game engine in development, being created for educational purposes. It is probably mildly -- if not horribly -- inefficient at some places, and it does not do much yet, but it is a learning experience focused mostly on creating a minimal working example.
+This is a crude game engine in development, being created for educational purposes. It is probably mildly -- if not horribly -- inefficient at some places, and it does not do much *yet*, but it is a learning experience focused mostly on creating a minimal working example.
 
 ##  Features
 - Basic 3-D shape creation and management, with customizable positions, velocities, rotations and angular velocities.
 - Multiple cameras in one scene, either free or following an object.
 
 ## Use
-In order to use the engine, user needs to satisfy the usual requirements for using OpenGL. This means that the user needs to include GLEW and GLFW to his/her path. After this, user #includes GameEngine.h and creates a class inheriting publicly from the GLManager. In this class, user needs to overwrite two public functions :
+In order to use the engine, user needs to satisfy the usual requirements for using OpenGL. This means that the user needs to include GLEW and GLFW to his/her path. For help, see https://www.youtube.com/watch?v=vGptI11wRxE. After this, user #includes GameEngine.h and creates a class inheriting publicly from the GLManager. In this class, user needs to overwrite two public functions :
 - **bool OnUserCreate()**
 - **bool OnUserUpdate(GLdouble deltaTime)**
 
@@ -17,38 +17,44 @@ In order to use the engine, user needs to satisfy the usual requirements for usi
 
 In the main function, user creates an default instant of the child class, and then calls the Run(width, height) function with desired window width and height to initialize the game.
 
-**Source.cpp in the repo gives a demonstration of implementation of the engine.
-**
+**Source.cpp in the repo gives a demonstration of implementation of the engine.**
 
 ## Game Loop Flowchart
-``` flow
-st=>start: Start
-op1=>operation: Create shader programs and get uniform variables.
-op2=>operation: Call OnUserCreate()
-cond1=>condition: OnUserCreate() returns true
-op3=>operation: Create projection matrix
-cond2=>condition: Window should close
-cond3=>condition: Free camera active
-op4=>operation: Update free camera using input
-op5=>operation: Call OnUserUpdate()
-cond4=>condition: OnUserUpdate() returns true
-op6=>operation: Render all objects and refresh window.
-e=>end: Terminate
+``` mermaid
+flowchart TD
+st([Start])
+op1[[Create shader programs and get IDs for uniform variables]]
+op2[[Call OnUserCreate]]
+cond1{OnUserCreate returns true}
+op3[[Create projection matrix]]
+cond2{Window should close}
+cond3{Free camera active}
+op4[[Update free camera using input]]
+op5[[Call OnUserUpdate]]
+cond4{OnUserUpdate returns true}
+op6[[Render all objects and refresh window.]]
+e([Terminate])
 
-st->op1->op2->cond1->op3->cond2->cond3->op4->op5->cond4->op6->cond2
-cond1(yes)->op3
-cond1(no)->e
-cond2(yes)->cond3
-cond2(no)->e
-cond3(yes)->op4
-cond3(no)->op5
-cond4(yes)->op6
-cond4(no)->e
+st-->op1
+op1-->op2
+op2-->cond1
+cond1-- YES -->op3
+cond1-- NO -->e
+op3-->cond2
+cond2-- NO -->cond3
+cond2-- YES -->e
+cond3-- YES -->op4
+cond3-- NO -->op5
+op4-->op5
+op5-->cond4
+cond4-- YES -->op6
+cond4-- NO -->e
+op6-->cond2
 ```
 
 ## Files
 ### GLManager.h
-This file defines the engine : everything the user will interact when making his/her game. Inside, it defines the class GLManager, which the user needs to inherit from when making his/her game.
+This file defines the engine : everything the user will interact with when making his/her game. Inside, it defines the class GLManager, which the user needs to inherit from when making his/her game.
 
 #### Functions
 
@@ -62,7 +68,7 @@ User calls this function with desired window width and height to run the game lo
 Create a camera in position **pos**, facing the direction designated by parameters **up**, **yaw** and **pitch**. Set boolean parameter **active** to true if you want this camera to be the active camera right from the beginning. Returns the integer index of the generated camera in the list of cameras of the manager. This index now can be used with GetCamWithIndex (below) to get a handle for the camera.
 
 - ###### void SetActiveCam(Camera* cam) : 
-Sets the camera which is being pointed at by parameter **cam** to be active, and other cameras inactive. ** Only one camera at a time can be the active camera.**
+Sets the camera which is being pointed at by parameter **cam** to be active, and other cameras inactive. **Only one camera at a time can be the active camera.**
 
 - ###### Camera* GetCamWithIndex(GLuint index) :
 Returns a pointer to the Camera object with an **index** given by the parameter.
