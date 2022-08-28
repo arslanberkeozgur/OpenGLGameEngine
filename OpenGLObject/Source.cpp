@@ -55,5 +55,5 @@ private:
 int main()
 {
 	Test test;
-	test.Run(1980, 1080);
+	test.Run(1980, 1080, 0.1f, 0.0f, 0.3f);
 }

@@ -93,15 +93,17 @@ public:
 	virtual bool OnUserCreate() = 0;
 	virtual bool OnUserUpdate(GLdouble deltaTime) = 0;
 
-	void Run(GLint width, GLint height)
+	void Run(GLint width, GLint height, GLfloat R, GLfloat G, GLfloat B)
 	{
 		mainWindow = new GLWindow(width, height);
+		mainWindowColor = glm::vec3(R, G, B);
 		mainWindow->Initialize();
 		if (!Loop())
 			Destroy();
 	}
 private:
 	GLWindow* mainWindow;
+	glm::vec3 mainWindowColor;
 	Shader* shader;
 	
 	ActiveCamera* mainCamera;
@@ -183,7 +185,7 @@ private:
 			
 			mainWindow->SwapBuffers();
 			mainWindow->PollEvents();
-			mainWindow->Clear(0.8f, 0.6f, 0.6f);
+			mainWindow->Clear(mainWindowColor.x, mainWindowColor.y, mainWindowColor.z);
 		}
 		return true;
 	}
