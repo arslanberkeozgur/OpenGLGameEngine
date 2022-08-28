@@ -137,7 +137,7 @@ Returns the model matrix of the object for rendering.
 
 ### Camera.h
 
-Defines two camera classes: Camera and ActiveCamera, latter of which derives from the former. Basically, an active camera can be manipulated by key strokes and mouse movement, while a Camera object is usually passive. A Camera object can follow an GLObject object.
+Defines two camera classes: Camera and ActiveCamera, latter of which derives from the former. Basically, an active camera can be manipulated by key strokes and mouse movement, while a Camera object is usually passive. A Camera object can follow a GLObject object.
 
 #### Camera class
 
