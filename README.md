@@ -7,7 +7,7 @@ This is a crude game engine in development, being created for educational purpos
 - Multiple cameras in one scene, either free or following an object.
 
 ## Use
-In order to use the engine, user needs to satisfy the usual requirements for using OpenGL. This means that the user needs to include GLEW and GLFW to his/her path. After this, user #includes GameEngine.h and creates a class inheriting publicly from the GLManager. In this class, user needs to overwrite two public functions :
+In order to use the engine, user needs to satisfy the usual requirements for using OpenGL. This means that the user needs to include GLEW and GLFW to his/her path. For help, see https://www.youtube.com/watch?v=vGptI11wRxE. After this, user #includes GameEngine.h and creates a class inheriting publicly from the GLManager. In this class, user needs to overwrite two public functions :
 - **bool OnUserCreate()**
 - **bool OnUserUpdate(GLdouble deltaTime)**
 
