@@ -25,7 +25,7 @@ In the main function, user creates an default instant of the child class, and th
 flowchart TD
 st([Start])
 op1[[Create shader programs and get uniform variables]]
-op2 [[Call OnUserCreate()]]
+op2[[Call OnUserCreate()]]
 cond1{OnUserCreate() returns true}
 op3[[Create projection matrix]]
 cond2{Window should close}
