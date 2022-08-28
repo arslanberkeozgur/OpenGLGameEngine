@@ -157,8 +157,8 @@ Is used by GLManager to create view matrix. *Probably does not need to be public
 Derives from Camera.
 
 - ###### void keyControl(bool* keys, GLfloat deltaTime)
-Called by GLManager.  Can be customized by the the user.  Pressing WASD updates camera position . Holding down left shift speeds the camera to 2 times its base speed. 
+Called by GLManager.  Can be customized by the user.  Pressing WASD updates camera position . Holding down left shift speeds the camera to 2 times its base speed. 
 
 - ###### void MouseControl(GLfloat xChange, GLfloat yChange, GLfloat deltaTime, GLuint smoothness) : 
 Called by GLManager. Can be customized by the the user.  Calculates the change in camera orientation based on changes in cursor position x and y. 
-*There is a smoothness feature, which is not really stable at all among different systems, which basically delays the mouse input over several loops to create a more smooth mouse look. Generally smoothness of about 2 - 4 works, but when the screen is graphic intensive, best is putting it to 1 (which is the default value anyway).*
+*There is a smoothness feature, which is not really stable at all among different systems, which basically delays the mouse input over several loops to create a more smooth mouse look. Generally smoothness of about 2 - 4 works, but when the screen is graphic intensive,the best is putting it to 1 (which is the default value anyway).*
