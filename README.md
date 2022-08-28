@@ -41,8 +41,8 @@ op2-->cond1
 cond1-- YES -->op3
 cond1-- NO -->e
 op3-->cond2
-cond2-- YES -->cond3
-cond2-- NO -->e
+cond2-- NO -->cond3
+cond2-- YES -->e
 cond3-- YES -->op4
 cond3-- NO -->op5
 op4-->op5
