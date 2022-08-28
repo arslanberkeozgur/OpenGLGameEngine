@@ -25,14 +25,14 @@ In the main function, user creates an default instant of the child class, and th
 flowchart TD
 st([Start])
 op1[[Create shader programs and get uniform variables]]
-op2[[Call OnUserCreate()]]
-cond1{OnUserCreate() returns true}
+op2[[Call OnUserCreate]]
+cond1{OnUserCreate returns true}
 op3[[Create projection matrix]]
 cond2{Window should close}
 cond3{Free camera active}
 op4[[Update free camera using input]]
-op5[[Call OnUserUpdate()]]
-cond4{OnUserUpdate() returns true}
+op5[[Call OnUserUpdate]]
+cond4{OnUserUpdate returns true}
 op6[[Render all objects and refresh window.]]
 e([Terminate])
 
