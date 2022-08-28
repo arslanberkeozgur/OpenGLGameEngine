@@ -39,6 +39,9 @@ glm::mat4 Camera::CalculateViewMatrix()
 	return glm::lookAt(position, position + front, up);
 }
 
+/// ////////////////////////////////////////////////////////////////////////////////////////
+
+
 ActiveCamera::ActiveCamera(glm::vec3 initialPos, glm::vec3 initialUp,
 	GLfloat initialYaw, GLfloat initialPitch, bool active, GLfloat initialMoveSpeed, GLfloat initialTurnSpeed)
 	:Camera(initialPos, initialUp, initialYaw, initialPitch, active)

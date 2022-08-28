@@ -62,7 +62,7 @@ public:
 	);
 
 	void keyControl(bool* keys, GLfloat deltaTime);
-	void MouseControl(GLfloat xChange, GLfloat yChange, GLfloat deltaTime, GLuint smoothness);
+	void MouseControl(GLfloat xChange, GLfloat yChange, GLfloat deltaTime, GLuint smoothness = 1);
 private:
 	GLfloat movementSpeed;
 	GLfloat baseSpeed;
