@@ -68,7 +68,7 @@ User calls this function with desired window width and height to run the game lo
 Create a camera in position **pos**, facing the direction designated by parameters **up**, **yaw** and **pitch**. Set boolean parameter **active** to true if you want this camera to be the active camera right from the beginning. Returns the integer index of the generated camera in the list of cameras of the manager. This index now can be used with GetCamWithIndex (below) to get a handle for the camera.
 
 - ###### void SetActiveCam(Camera* cam) : 
-Sets the camera which is being pointed at by parameter **cam** to be active, and other cameras inactive. ** Only one camera at a time can be the active camera.**
+Sets the camera which is being pointed at by parameter **cam** to be active, and other cameras inactive. **Only one camera at a time can be the active camera.**
 
 - ###### Camera* GetCamWithIndex(GLuint index) :
 Returns a pointer to the Camera object with an **index** given by the parameter.
