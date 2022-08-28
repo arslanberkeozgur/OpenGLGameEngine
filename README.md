@@ -60,8 +60,8 @@ This file defines the engine : everything the user will interact with when makin
 
 ##### General Functions
 
-- ###### void Run(GLint width, GLint height) : 
-User calls this function with desired window width and height to run the game loop. 
+- ###### void Run(GLint width, GLint height, GLfloat R, GLfloat G, GLfloat B) : 
+User calls this function with desired window width and height to run the game loop. User also sets the background colour using **R**, **G**, **B** values.
 
 ##### Camera Management Functions
 - ###### GLuint CreateCamera(glm::vec3 pos, glm::vec3 up, GLfloat yaw, GLfloat pitch, bool active) :
