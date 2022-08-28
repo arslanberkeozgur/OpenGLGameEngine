@@ -7,15 +7,15 @@ This is a crude game engine in development, being created for educational purpos
 - Multiple cameras in one scene, either free or following an object.
 
 ## Use
-In order to use the engine, the user needs to satisfy the usual requirements for using OpenGL. This means that the user needs to include GLEW and GLFW to his/her path. For help, see https://www.youtube.com/watch?v=vGptI11wRxE. After this,the user #includes GameEngine.h and creates a class inheriting publicly from the GLManager. In this class,the user needs to overwrite two public functions :
+In order to use the engine, the user needs to satisfy the usual requirements for using OpenGL. This means that the user needs to include GLEW and GLFW in his/her path. For help, see https://www.youtube.com/watch?v=vGptI11wRxE. After this,the user #includes GameEngine.h and creates a class inheriting publicly from the GLManager. In this class,the user needs to overwrite two public functions :
 - **bool OnUserCreate()**
 - **bool OnUserUpdate(GLdouble deltaTime)**
 
-**OnUserCreate()** is called once before the first loop of the game. This function is used to generate resources and add inital conditions to variables by the user.  **Any data  that will be used in each loop should be defined in the private data member section of the child class, since this data will be available everywhere in the class.** 
+**OnUserCreate()** is called once before the first loop of the game. This function is used to generate resources and add initial conditions to variables by the user.  **Any data  that will be used in each loop should be defined in the private data member section of the child class, since this data will be available everywhere in the class.** 
 
 **OnUserCreate(GLdouble deltaTime)** is called on each loop. The user uses this function for per loop calculations. Use deltaTime variable in velocity calculations to achieve system independent movement.
 
-In the main function,the user creates an default instant of the child class, and then calls the Run(width, height) function with desired window width and height to initialize the game.
+In the main function,the user creates a default instant of the child class, and then calls the Run(width, height) function with desired window width and height to initialize the game.
 
 **Source.cpp in the repo gives a demonstration of implementation of the engine.**
 
