@@ -79,7 +79,7 @@ Returns the number of Camera objects in the list of cameras of the manager.
 ##### Object Management Functions 
 
 - ###### GLuint CreateObject(Geometry geometry) :
-Creates an object in the position (0.0, 0.0, 0.0), facing towards z direction with up vector pointing at y direction. *(These will be customizable in later patches.)*  Object position, velocity, rotation, angular velocity and scale can only be changed through GLObject functions described below. Returns the index of the object in the list of objects of the manager.
+Creates an object in the position (0.0, 0.0, 0.0), facing towards z direction with up vector pointing at y direction. *(These will be customizable in later patches.)*  Object position, velocity, rotation, angular velocity and scale can only be changed through GLObject functions described below. Returns the index of the object in the list of objects of the manager. **geometry** can take the values : CUBE or PYRAMID. (for now) 
 
 - ###### GLObject* GetObjectWithIndex(GLuint index) : 
 Returns the GLObject pointer with **index** given by the parameter.
