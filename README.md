@@ -7,17 +7,17 @@ This is a crude game engine in development, being created for educational purpos
 - Multiple cameras in one scene, either free or following an object.
 
 ## Use
-In order to use the engine, user needs to satisfy the usual requirements for using OpenGL. This means that the user needs to include GLEW and GLFW to his/her path. For help, see https://www.youtube.com/watch?v=vGptI11wRxE. After this, user #includes GameEngine.h and creates a class inheriting publicly from the GLManager. In this class, user needs to overwrite two public functions :
+In order to use the engine, the user needs to satisfy the usual requirements for using OpenGL. This means that the user needs to include GLEW and GLFW in his/her path. For help, see https://www.youtube.com/watch?v=vGptI11wRxE. After this,the user #includes GameEngine.h and creates a class inheriting publicly from the GLManager. In this class,the user needs to overwrite two public functions :
 - **bool OnUserCreate()**
 - **bool OnUserUpdate(GLdouble deltaTime)**
 
-**OnUserCreate()** is called once before the first loop of the game. This function is used to generate resources and add inital conditions to variables by the user.  **Any data  that will be used in each loop should be defined in the private data member section of the child class, since this data will be available everywhere in the class.** 
+**OnUserCreate()** is called once before the first loop of the game. This function is used to generate resources and add initial conditions to variables by the user.  **Any data  that will be used in each loop should be defined in the private data member section of the child class, since this data will be available everywhere in the class.** 
 
 **OnUserCreate(GLdouble deltaTime)** is called on each loop. The user uses this function for per loop calculations. Use deltaTime variable in velocity calculations to achieve system independent movement.
 
-In the main function, user creates an default instant of the child class, and then calls the Run(width, height) function with desired window width and height to initialize the game.
+In the main function,the user creates a default instant of the child class, and then calls the Run(width, height) function with desired window width and height to initialize the game.
 
-**Source.cpp in the repo gives a demonstration of implementation of the engine.**
+**Source.cpp in the repo gives a demonstration of engine's implementation.**
 
 ## Game Loop Flowchart
 ``` mermaid
@@ -60,8 +60,8 @@ This file defines the engine : everything the user will interact with when makin
 
 ##### General Functions
 
-- ###### void Run(GLint width, GLint height) : 
-User calls this function with desired window width and height to run the game loop. 
+- ###### void Run(GLint width, GLint height, GLfloat R, GLfloat G, GLfloat B) : 
+The user calls this function with desired window width and height to run the game loop. The user also sets the background colour by using **R**, **G**, **B** values.
 
 ##### Camera Management Functions
 - ###### GLuint CreateCamera(glm::vec3 pos, glm::vec3 up, GLfloat yaw, GLfloat pitch, bool active) :
@@ -79,13 +79,13 @@ Returns the number of Camera objects in the list of cameras of the manager.
 ##### Object Management Functions 
 
 - ###### GLuint CreateObject(Geometry geometry) :
-Creates an object in the position (0.0, 0.0, 0.0), facing towards z direction with up vector pointing at y direction. *(These will be customizable in later patches.)*  Object position, velocity, rotation, angular velocity and scale can only be changed through GLObject functions described below. Returns the index of the object in the list of objects of the manager.
+Creates an object in the position (0.0, 0.0, 0.0), facing towards z direction with up vector pointing at y direction. *(These will be customizable in later patches.)*  Object position, velocity, rotation, angular velocity and scale can only be changed through GLObject functions described below. Returns the index of the object in the list of objects of the manager. **geometry** can take the values : CUBE or PYRAMID. (for now) 
 
 - ###### GLObject* GetObjectWithIndex(GLuint index) : 
 Returns the GLObject pointer with **index** given by the parameter.
 
 - ###### void KillObject(GLObject* obj) : 
-Kill and remove the object from the list of objects. Since list of objects is a list of unique pointers, this will remove the object completely from memory, therefore **user doesn't need to worry about garbage collection as long as he/she kills the object after he/she is done with it.**
+Kill and remove the object from the list of objects. Since list of objects is a list of unique pointers, this will remove the object completely from memory, therefore **the user doesn't need to worry about garbage collection as long as he/she kills the object after he/she is done with it.**
 
 - ###### GLuint GetObjectCount() : 
 Returns the number of objects which exist in the list of objects of the manager.
@@ -97,7 +97,7 @@ Returns true if the key described by enum **key** is pressed, false otherwise. I
 
 ### GLObject.h
 
-This file defines the physical object class which can be manipulated in the game. *In the future, this will probably become a more abstract class from which the GLPhysicalObject class will derive from. Furthermore, all objects are currently being drawn under the same shader, which will definitely change in future versions. Also, objects will have textures and multiple meshes. Lastly, collision detection will be added. This is a minimal (kind of) working example.*
+This file defines the physical object class which can be manipulated in the game. *In the future, this will probably become a more abstract class from which the GLPhysicalObject class will derive from. Also, objects will have textures and multiple meshes. Lastly, collision detection will be added. This is a minimal (kind of) working example.*
 
 #### Functions
 
@@ -137,7 +137,7 @@ Returns the model matrix of the object for rendering.
 
 ### Camera.h
 
-Defines two camera classes: Camera and ActiveCamera, latter of which derives from the former. Basically, an active camera can be manipulated by key strokes and mouse movement, while a Camera object is usually passive. A Camera object can follow an GLObject object.
+Defines two camera classes: Camera and ActiveCamera, latter of which derives from the former. Basically, an active camera can be manipulated by key strokes and mouse movement, while a Camera object is usually passive. A Camera object can follow a GLObject object.
 
 #### Camera class
 
@@ -160,5 +160,5 @@ Derives from Camera.
 Called by GLManager.  Can be customized by the user.  Pressing WASD updates camera position . Holding down left shift speeds the camera to 2 times its base speed. 
 
 - ###### void MouseControl(GLfloat xChange, GLfloat yChange, GLfloat deltaTime, GLuint smoothness) : 
-Called by GLManager. Can be customized by the user.  Calculates the change in camera orientation based on changes in cursor position x and y. 
-*There is a smoothness feature, which is not really stable at all among different systems, which basically delays the mouse input over several loops to create a more smooth mouse look. Generally smoothness of about 2 - 4 works, but when the screen is graphic intensive, best is putting it to 1 (which is the default value anyway).*
+Called by GLManager. Can be customized by the the user.  Calculates the change in camera orientation based on changes in cursor position x and y. 
+*There is a smoothness feature, which is not really stable at all among different systems, which basically delays the mouse input over several loops to create a more smooth mouse look. Generally smoothness of about 2 - 4 works, but when the screen is graphic intensive,the best is putting it to 1 (which is the default value anyway).*
