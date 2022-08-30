@@ -97,7 +97,7 @@ Returns true if the key described by enum **key** is pressed, false otherwise. I
 
 ### GLObject.h
 
-This file defines the physical object class which can be manipulated in the game. *In the future, this will probably become a more abstract class from which the GLPhysicalObject class will derive from. Furthermore, all objects are currently being drawn under the same shader, which will definitely change in future versions. Also, objects will have textures and multiple meshes. Lastly, collision detection will be added. This is a minimal (kind of) working example.*
+This file defines the physical object class which can be manipulated in the game. *In the future, this will probably become a more abstract class from which the GLPhysicalObject class will derive from. Also, objects will have textures and multiple meshes. Lastly, collision detection will be added. This is a minimal (kind of) working example.*
 
 #### Functions
 
