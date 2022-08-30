@@ -1,6 +1,6 @@
 #include "GLObject.h"
 
-GLObject::GLObject(GLuint id, Geometry geometry)
+GLObject::GLObject(GLuint id, Geometry geometry, glm::vec3 color)
 {
 	SetPosition(0.0f, 0.0f, 0.0f);
 	SetRotation(0.0f, 0.0f, 0.0f);
@@ -8,13 +8,15 @@ GLObject::GLObject(GLuint id, Geometry geometry)
 	SetVelocity(0.0f, 0.0f, 0.0f);
 	SetAngularVelocity(0.0f, 0.0f, 0.0f);
 
-	up = glm::vec3(0.0f, 1.0f, 0.0f);
-	right = glm::vec3(1.0f, 0.0f, 0.0f);
+	this->up = glm::vec3(0.0f, 1.0f, 0.0f);
+	this->right = glm::vec3(1.0f, 0.0f, 0.0f);
 
-	mesh = new Mesh(geometry);
-	mesh->CreateMesh();
+	this->mesh = new Mesh(geometry);
+	this->mesh->CreateMesh();
 
-	ID = id;
+	this->color = color;
+
+	this->ID = id;
 }
 
 void GLObject::SetMesh(Mesh* m)

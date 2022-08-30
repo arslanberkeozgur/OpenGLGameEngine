@@ -26,6 +26,8 @@ public:
 		listOfCameras.push_back(std::move(std::unique_ptr<Camera>(mainCamera)));
 		activeCamera = mainCamera;
 
+		drawDistance = 300.0f;
+		mainWindowColor = glm::vec3(0.0f, 0.0f, 0.0f);
 	}
 	~GLManager()
 	{
@@ -65,10 +67,10 @@ public:
 	}
 
 	// Handling Objects.
-	GLuint CreateObject(Geometry geometry)
+	GLuint CreateObject(Geometry geometry, GLfloat R, GLfloat G, GLfloat B)
 	{
 		// Generate, push back and return index.
-		std::unique_ptr<GLObject> obj(new GLObject(listOfObjects.size(), geometry));
+		std::unique_ptr<GLObject> obj(new GLObject(listOfObjects.size(), geometry, glm::vec3(R, G, B)));
 		listOfObjects.push_back(std::move(obj));
 		return listOfObjects.size() - 1;
 	}
@@ -85,6 +87,10 @@ public:
 	}
 
 	bool GetKey(GLint key) { return mainWindow->getKeys()[key]; };
+	void SetDrawDistance(GLfloat distance)
+	{
+		drawDistance = distance;
+	}
 
 	GLuint GetObjectCount() { return listOfObjects.size(); };
 	GLuint GetCamCount() { return listOfCameras.size(); };
@@ -114,6 +120,8 @@ private:
 	GLdouble deltaTime;
 	GLdouble lastTime;
 
+	GLfloat drawDistance;
+
 	// Main loop of the animations.
 	bool Loop()
 	{
@@ -126,6 +134,7 @@ private:
 		GLuint uniformModel = shader->GetModelLocation();
 		GLuint uniformProjection = shader->GetProjectionLocation();
 		GLuint uniformView = shader->GetViewLocation();	
+		GLuint uniformColor = shader->GetColorLocation();
 		
 		// This is where user creates resources.
 		if (!OnUserCreate())
@@ -133,7 +142,7 @@ private:
 		
 		// Standart 3d perspective projection.
 		glm::mat4 projection = glm::perspective(glm::radians(45.0f),
-			(GLfloat)mainWindow->getBufferWidth() / mainWindow->getBufferHeight(), 0.1f, 500.0f);
+			(GLfloat)mainWindow->getBufferWidth() / mainWindow->getBufferHeight(), 0.1f, drawDistance);
 
 		double seconds = glfwGetTime();
 		int nbFrames = 0;
@@ -176,6 +185,7 @@ private:
 					if (object != nullptr)
 					{
 						object->Update();
+						glUniform4f(uniformColor, object->GetColor().x, object->GetColor().y, object->GetColor().z, 1.0f);
 						glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(object->GetModelMatrix()));
 						object->Render();
 					}

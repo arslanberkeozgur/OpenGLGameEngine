@@ -11,14 +11,16 @@ public:
 	
 	bool OnUserCreate()
 	{
-		for (int i = 0; i < 100; i++)
+		for (int i = 0; i < 1000; i++)
 		{
-			GLuint index = CreateObject(CUBE);
+			GLuint index = CreateObject(CUBE, (GLfloat)(rand() % 1001) / 1000, (GLfloat)(rand() % 1001) / 1000, (GLfloat)(rand() % 1001) / 1000);
 			GetObjectWithIndex(index)->SetPosition(5 * i, 0.0f, 0.0f);
 			GetObjectWithIndex(index)->SetVelocity((GLfloat)(rand() % 100) / 10000.0f, (GLfloat)(rand() % 100) / 10000.0f, (GLfloat)(rand() % 100) / 10000.0f);
 			GetObjectWithIndex(index)->SetAngularVelocity((GLfloat)(rand() % 100) / 100.0f, 0.0f, 0.0f);
 		}
 
+		SetDrawDistance(500.0f);
+		
 		CreateCamera(glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f, 0.0f, false);
 		
 	    followIndex = 0;
@@ -55,5 +57,5 @@ private:
 int main()
 {
 	Test test;
-	test.Run(1980, 1080, 0.1f, 0.0f, 0.3f);
+	test.Run(1980, 1080, 0.1f, 0.6f, 0.7f);
 }

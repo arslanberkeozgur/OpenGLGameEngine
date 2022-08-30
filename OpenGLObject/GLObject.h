@@ -13,7 +13,7 @@
 class GLObject
 {
 public:
-	GLObject(GLuint id, Geometry geometry);
+	GLObject(GLuint id, Geometry geometry, glm::vec3 color);
 	~GLObject();
 	
 	glm::vec3 GetPosition() { return position; };
@@ -30,6 +30,8 @@ public:
 
 	glm::vec3 GetAngularVelocity() { return angularVelocity; };
 	void SetAngularVelocity(GLfloat x, GLfloat y, GLfloat z) { angularVelocity = glm::vec3(x, y, z); };
+
+	glm::vec3 GetColor() { return color; };
 
 	Mesh* GetMesh() { return mesh; };
 	void SetMesh(Mesh* mesh);
@@ -50,6 +52,8 @@ private:
 	
 	glm::vec3 up;
 	glm::vec3 right;
+
+	glm::vec3 color;
 
 	GLuint ID;
 
